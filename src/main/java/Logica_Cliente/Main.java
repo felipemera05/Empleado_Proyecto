@@ -17,9 +17,12 @@ public class Main {
         //Declarando e inicializando variables
         
             int opc=0;
+            boolean bandera_ciclo=true;
             Scanner scan = new Scanner(System.in);
             String nombre="", codigo="",id="";
-            int cantidad=0, año_ingreso=0,bandera=0;
+            int cantidad=0, año_ingreso=0,bandera=0,bandera_agregar=0;
+            
+            
             ArrayList<Empleado> listaempleados= new ArrayList<>();
             Empleado objempleado;
             Empleado objempleado1= new Empleado("Felipe", "12345", 1999);
@@ -51,21 +54,49 @@ public class Main {
                         //Algoritmo en lenguaje JAVA Registrar
                         
                         System.out.println("Digite la cantidad de empleados a registrar");
-                    cantidad= scan.nextInt();
-                    scan.nextLine();
+                        cantidad= scan.nextInt();
+                        scan.nextLine();
                    
-                    for (int i = 0; i < cantidad; i++) {
+                    do{
+                        for (int i = 0; i < cantidad; i++) {
                         scan.nextLine();
                         System.out.println("Digite el nombre del empleado");
                         nombre= scan.nextLine();
-                        System.out.println("Digite el codigo del empleado");
-                        codigo= scan.nextLine();
-                        System.out.println("Digite el año de ingreso del empleado");
-                        año_ingreso= scan.nextInt();
-                        objempleado= new Empleado(nombre, codigo, año_ingreso);
-                        listaempleados.add(objempleado);
+                        char[] caracteres = nombre.toCharArray();
+                        for (int j = 0; j < caracteres.length; j++) {
+                           if (Character.isDigit(caracteres[j])) {
+                            System.out.println("El carácter '" + caracteres[j] + "' es un numero.");
+                            bandera_agregar+= 1;
+                        } else {
+                            System.out.println("El carácter '" + caracteres[j] + "' es una letra.");
+                            
+                        }
+
+                        }
+                        if(bandera_agregar == 0){
+                             System.out.println("Digite el codigo del empleado");
+                            codigo= scan.nextLine();
+                            System.out.println("Digite el año de ingreso del empleado");
+                            año_ingreso= scan.nextInt();
+                            objempleado= new Empleado(nombre, codigo, año_ingreso);
+                            listaempleados.add(objempleado);
+                            bandera_ciclo=false;
+                            
+                        }else{
+                            System.out.println(bandera_agregar);
+                            System.out.println("ingrese un nombre valido");
+                            
+                            
+                            bandera_agregar=0;
+                            
+                        }
+                        
+                       
 
                    }
+                        
+                    }
+                    while(bandera_ciclo);
                     break;
                     case 2:
                         
