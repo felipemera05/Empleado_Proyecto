@@ -34,7 +34,8 @@ public class Main {
        
              //Creando menu de opciones
              
-            System.out.println("1. Registrar Empleado");
+            do{
+                System.out.println("1. Registrar Empleado");
             System.out.println("2. Editar Empleado");
             System.out.println("3. Consultar Empleado");
             System.out.println("4. Mostrar Empleados");
@@ -70,7 +71,7 @@ public class Main {
                         
                         //Algoritmo en lenguaje JAVA Editar
                         
-                        scan.nextLine();
+                    scan.nextLine();
                     System.out.println("Digite el id del empleado a modificar");
                     id=scan.nextLine();
                     for (int i = 0; i < listaempleados.size(); i++) {
@@ -160,6 +161,9 @@ public class Main {
                     break;
                     default: System.out.println("Opcion no valida para el menu");
             }
+            
+            }
+            while(opc!=6);
     }
     
 }
